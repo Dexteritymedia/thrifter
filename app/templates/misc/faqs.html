@@ -1,0 +1,23 @@
+{% if faqs %}
+
+<div class="mt-3 my-lg-3 mx-lg-5">
+	<h2 class="text-center">Frequently Asked Question</h2>
+	<div class="accordion accordion-flush" id="accordionFlushExampleAway">
+	{% for faq in faqs %}
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseAway{{faq.question}}" aria-expanded="false" aria-controls="flush-collapseOne">
+		{{faq.question}}
+      </button>
+    </h2>
+    <div id="flush-collapseAway{{faq.question}}" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExampleAway">
+	  <div class="table-responsive m-4">
+		{{faq.answer}}
+	</div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+</div>
+
+{% endif %}

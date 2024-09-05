@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container text-center mt-5">
+	<div class="row mt-5">
+	<div class="col-6">
+	{% if score %}
+		<h1>
+			<p>Points: {{score}}</p>
+		</h1>
+	{% endif %}
+	{% if attempts %}
+		<h1>
+			<p>Attempts: {{attempts}} times</p>
+		</h1>
+	{% endif %}
+	</div>
+	<div class="col-6">
+	<h1>{{question.question_text}}</h1>
+	{% if question.has_image %}
+		<img src="{{question.blurred_image.url}}" class="img-fluid" width="100px" height="100px" alt=""/>
+	{% endif %}
+	
+	<form method="post" action="{% url 'take_quiz_' %}">
+		{% csrf_token %}
+		<input type="radio" name="option" value="{{question.option_one}}">{{question.option_one}}<br>
+		<input type="radio" name="option" value="{{question.option_two}}">{{question.option_two}}<br>
+		<input type="radio" name="option" value="{{question.option_three}}">{{question.option_three}}<br>
+		<button type="submit">Submit</button>
+		<button type="submit" name="skip">Next question</button>
+	</form>
+</div>
+</div>
+</div>
+{% endblock content %}

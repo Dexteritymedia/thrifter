@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+	<h1>{{question.question_text}}</h1>
+	{% if question.has_image %}
+		<img src="{{question.clear_image.url}}" class="img-fluid" alt=""/>
+	{% endif %}
+	<p>Your answer: {{user_answer}}</p>
+	{% if is_correct %}
+		<p>Correct!</p>
+	{% else %}
+		<p>Incorrect: The correct answer was {{question.correct_option}}.</p>
+	{% endif %}
+</div>
+{% endblock content %}

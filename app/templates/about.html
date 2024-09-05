@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static faqs %}
+
+
+{% block content %}
+<div class="container">
+{% include 'misc/contact_form.html' %}
+
+{% faqs_tag %}
+</div>
+
+
+{% endblock content %}
